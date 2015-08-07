@@ -25,7 +25,7 @@ angular.module('app.utils', ['ionic'])
                     template: message
                 });
             },
-            hide: function(){
+            hide: function () {
                 $ionicLoading.hide();
             }
         }

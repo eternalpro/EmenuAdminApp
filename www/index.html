@@ -46,40 +46,40 @@
                 当日营业额
             </div>
             <div class="item">
-                300,000 元
+                {{overview.todayResult}} 元
             </div>
             <div class="item item-divider">
                 当日订单数
             </div>
             <div class="item">
-                100 笔
+                {{overview.todayOrderCount}} 笔
             </div>
             <div class="item item-divider">
-                当日当日翻台率
+                当日翻台率
             </div>
             <div class="item">
-                200%
+                {{overview.rateOfTableTurn}}%
             </div>
             <div class="item item-divider">
                 本月营业额
             </div>
             <div class="item">
-                300,000 元
+                {{overview.monthResult}} 元
             </div>
             <div class="item item-divider">
                 本月最受欢迎菜品
             </div>
-            <div class="item" on-finish-render-filters>
+            <div class="item " on-finish-render-filters>
                 <p>
-                    状元: 宫保鸡丁
+                    状元: {{overview.popFoods[0].name}}
                 </p>
 
                 <p>
-                    榜眼: 鱼香肉丝
+                    榜眼: {{overview.popFoods[1].name}}
                 </p>
 
                 <p>
-                    探花: 红烧日本豆腐
+                    探花: {{overview.popFoods[2].name}}
                 </p>
             </div>
         </div>
