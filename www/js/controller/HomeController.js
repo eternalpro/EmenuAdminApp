@@ -4,7 +4,7 @@
 /**
  * Ö÷Ò³ÄÚÈÝ
  */
-angular.module('app.home', ['ionic'])
+angular.module('controller.home', ['ionic'])
     .controller('HomeCtrl', function ($scope, $http, $ionicSideMenuDelegate) {
         $scope.toggleLeft = function () {
             $ionicSideMenuDelegate.toggleLeft();

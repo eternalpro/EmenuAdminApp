@@ -4,9 +4,18 @@
 /**
  * …Ë÷√“≥√Ê
  */
-angular.module('app.settings', ['ionic'])
-    .controller('SettingsCtrl', function ($scope, $http, $ionicSideMenuDelegate) {
+angular.module('controller.settings', [
+    'ionic',
+    'service.settings',
+    'app.localKey',
+    'app.utils'
+])
+    .controller('SettingsCtrl', function ($rootScope, $scope, $http, $ionicSideMenuDelegate, $localStorage, $localKey, $hostModal, $settingsValues) {
+        $scope.settings = $settingsValues.settings;
         $scope.toggleLeft = function () {
             $ionicSideMenuDelegate.toggleLeft();
         };
+        $scope.setupServer = function(){
+            $hostModal.show();
+        }
     });

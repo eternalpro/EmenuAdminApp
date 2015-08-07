@@ -8,10 +8,11 @@ var app = angular.module('app', [
     'ionic',
     'app.localKey',
     'app.utils',
-    'app.home',
-    'app.hostSave',
-    'app.leftSlide',
-    'app.settings'
+    'controller.home',
+    'controller.hostSave',
+    'controller.leftSlide',
+    'controller.settings',
+    'service.settings'
 ])
     .config(function ($stateProvider, $urlRouterProvider) {
         $stateProvider.state('home', {
@@ -39,23 +40,14 @@ var app = angular.module('app', [
                 StatusBar.styleDefault();
             }
         });
-        $rootScope.leftSide = 'home';
     })
-    .directive('onFinishRenderFilters', function ($rootScope, $localStorage, $ionicModal, $localKey) {
+    .directive('onFinishRenderFilters', function ($rootScope, $localStorage, $ionicModal, $localKey, $hostModal) {
         return {
             restrict: 'A',
-            link: function($scope, element, attr) {
-                if(!$localStorage.get($localKey.host)){
-                    $ionicModal.fromTemplateUrl('host-modal.html', {
-                        scope: $scope,
-                        animation: 'slide-in-up',
-                        backdropClickToClose: false,
-                        hardwareBackButtonClose: false,
-                        focusFirstInput: true
-                    }).then(function(modal) {
-                        $rootScope.hostModal = modal;
-                        modal.show();
-                    });
+            link: function ($scope, element, attr) {
+                var $host = $localStorage.get($localKey.host);
+                if (!$host || $host == 'undefined') {
+                    $hostModal.show();
                 }
             }
         };

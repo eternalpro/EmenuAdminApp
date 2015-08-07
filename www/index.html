@@ -14,7 +14,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
 </head>
-<body ng-app="app" >
+<body ng-app="app">
 <ion-side-menus>
     <ion-side-menu-content>
         <ion-nav-view></ion-nav-view>
@@ -25,22 +25,22 @@
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item menu-close ng-click="homeClick()" ng-class="{active: leftSide == 'home'}">
-                    <i class="icon ion-home"></i> 首页
+                <ion-item menu-close ng-click="homeClick()">
+                    <i class="icon ion-ios-home-outline"></i> 首页
                 </ion-item>
-                <ion-item menu-close ng-click="settingsClick()" ng-class="{active: leftSide == 'settings'}">
-                    <i class="icon ion-settings"></i> 设置
+                <ion-item menu-close ng-click="settingsClick()">
+                    <i class="icon ion-ios-gear-outline"></i> 设置
                 </ion-item>
         </ion-content>
     </ion-side-menu>
 </ion-side-menus>
 
-<script type="text/ng-template" id="home.html">
+<script type="text/ng-template" id="home.html" on-finish-render-view-filter>
     <ion-header-bar class="bar-positive">
         <button class="button button-icon icon ion-navicon" ng-click="toggleLeft()"></button>
         <h1 class="title">极智 - BOSS Special</h1>
     </ion-header-bar>
-    <ion-content >
+    <ion-content>
         <div class="list">
             <div class="item item-divider">
                 当日营业额
@@ -73,9 +73,11 @@
                 <p>
                     状元: 宫保鸡丁
                 </p>
+
                 <p>
                     榜眼: 鱼香肉丝
                 </p>
+
                 <p>
                     探花: 红烧日本豆腐
                 </p>
@@ -84,29 +86,59 @@
     </ion-content>
 </script>
 
-<script type="text/ng-template" id="settings.html" on-finish-render-view-filter>
+<script type="text/ng-template" id="settings.html">
     <ion-header-bar class="bar bar-header bar-positive">
-        <button class="button button-icon icon ion-navicon"  ng-click="toggleLeft()"></button>
+        <button class="button button-icon icon ion-navicon" ng-click="toggleLeft()"></button>
         <h1 class="title">设置</h1>
     </ion-header-bar>
     <ion-content>
-        <h2>Settings Page</h2>
-        <p>Here's the main route for the app.</p>
+        <div class="list">
+            <a class="item item-icon-left" ng-click="setupServer()">
+                <i class="icon ion-ios-world-outline"></i>
+                设置服务器IP
+                <span class="item-note">
+                    {{settings.host}}
+                </span>
+            </a>
+            <a href="" class="item item-icon-left" ng-click="setupAbout()">
+                <i class="icon ion-ios-information-outline"></i>
+                关于
+            </a>
+        </div>
     </ion-content>
 </script>
 
+<!-- Host Settings Modal -->
 <script id="host-modal.html" type="text/ng-template">
     <div class="modal" ng-controller="HostSaveCtrl">
-        <ion-header-bar class="bar-secondary assertive-bg">
-            <h1 class="title stable">请输入要连接的服务器端的IP</h1>
+        <ion-header-bar class="bar-secondary ">
+            <h1 class="title">请输入要连接的服务器端的IP</h1>
+            <button class="button button-clear" ng-click="modalHide()" ng-if="form.host">
+                <i class="icon ion-android-close"></i>
+            </button>
         </ion-header-bar>
-        <!-- Modal content area -->
         <ion-content>
-            <form ng-submit="saveHost(form)">
+            <form ng-submit="saveHost()">
                 <div class="list">
                     <label class="item item-input">
                         <input type="text" placeholder="eg: 192.168.3.189:8080" ng-model="form.host">
                     </label>
+
+                    <div class="item item-toggle">
+                        <label ng-if="form.remIP" class="positive">
+                            已记住此IP
+                        </label>
+                        <lable ng-if="!form.remIP" class="assertive">
+                            不记住此IP
+                        </lable>
+                        <label class="toggle toggle-positive">
+                            <input type="checkbox" ng-model="form.remIP">
+
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
                 </div>
                 <div>
                     <button type="submit" class="button button-block button-positive">保存</button>
@@ -118,6 +150,8 @@
 
 <script src="js/utils/LocalKey.js"></script>
 <script src="js/utils/AppUtils.js"></script>
+
+<script src="js/service/SettingsService.js"></script>
 
 <script src="js/controller/HostSaveController.js" charset="utf-8"></script>
 <script src="js/controller/HomeController.js" charset="utf-8"></script>
