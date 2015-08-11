@@ -32,7 +32,7 @@ angular.module('controller.home', [
                 $scope.overview = res.data
                 console.log('data loaded!');
             }, function(res){
-                $cordovaToast.showShortCenter('数据加载失败，请检查服务器地址设置是否正确！')
+                $cordovaToast.showShortCenter('数据加载失败，请检查服务器地址设置是否正确!')
             });
 
         }

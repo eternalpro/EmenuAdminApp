@@ -1,9 +1,6 @@
 /**
  * Created by gefan on 2015/8/7.
  */
-/**
- * ×ó²à»¬¶¯controller
- */
 angular.module('controller.leftSlide', ['ionic'])
     .controller('LeftSlideCtrl', function ($rootScope, $scope, $ionicSideMenuDelegate, $ionicViewSwitcher, $state) {
         $scope.homeClick = function () {

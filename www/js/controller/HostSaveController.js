@@ -16,12 +16,12 @@ angular.module('controller.hostSave', [
             var $host = $scope.form.host;
             var $remIP = $scope.form.remIP;
             if (!$host || $host.trim() == '') {
-                $alert.showMessage('请输入服务器IP！', '注意')
+                $alert.showMessage('请输入服务器IP!', '注意')
             } else {
                 $loading.show('正在测试服务器的连通性...');
                 $http.get('http://' + $host + $getUrl.sayHello).then(function (res) {
                     if (res.data == 'success') {
-                        if ($remIP){
+                        if ($remIP) {
                             $localStorage.set($localKey.host, $host);
                             $settingsValues.settings.host = $host;
                         }
@@ -32,7 +32,7 @@ angular.module('controller.hostSave', [
                     $loading.hide();
                 }, function (response) {
                     $loading.hide();
-                    $alert.showMessage('连接失败, 请重新输入！');
+                    $alert.showMessage('连接失败, 请重新输入!');
                 });
             }
         };

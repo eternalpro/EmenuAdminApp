@@ -14,7 +14,9 @@ var app = angular.module('app', [
     'controller.settings',
     'service.settings'
 ])
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+        $httpProvider.defaults.timeout = 5000;
+
         $stateProvider.state('home', {
             url: '/home',
             cache: false,

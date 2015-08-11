@@ -19,6 +19,6 @@ angular.module('controller.settings', [
             $hostModal.show();
         }
         $scope.setupAbout = function(){
-            $alert.showMessage('EternalPro 出品！', '关于')
+            $alert.showMessage('EternalPro 出品!', '关于')
         }
     });
