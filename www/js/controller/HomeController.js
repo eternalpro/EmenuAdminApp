@@ -30,6 +30,7 @@ angular.module('controller.home', [
         var loadData = function(){
             $http.get('http://' + $localStorage.get($localKey.host) + $getUrl.home , {cache: false}).then(function(res){
                 $scope.overview = res.data
+                console.log('data loaded!');
             }, function(res){
                 $cordovaToast.showShortCenter('数据加载失败，请检查服务器地址设置是否正确！')
             });
@@ -37,6 +38,7 @@ angular.module('controller.home', [
         }
         $scope.reloadData = function(){
             loadData();
+            $scope.$broadcast('scroll.refreshComplete');
         }
         loadData();
     });
