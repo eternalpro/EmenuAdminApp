@@ -36,9 +36,14 @@ angular.module('controller.home', [
             });
 
         }
-        $scope.reloadData = function(){
+
+        $scope.pullLoadData = function(){
             loadData();
             $scope.$broadcast('scroll.refreshComplete');
+        }
+        $scope.reloadData = function(){
+            $scope.refreshing = true;
+            $scope.pullLoadData();
         }
         loadData();
     });
