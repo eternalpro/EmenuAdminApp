@@ -4,6 +4,6 @@
 angular.module('app.localKey', [])
     .factory('$localKey', function () {
         return {
-            host: 'host'    // ·şÎñÆ÷¶ËµØÖ·
+            host: 'host'    // æœåŠ¡å™¨ç«¯åœ°å€key
         }
     });

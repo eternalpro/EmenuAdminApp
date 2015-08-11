@@ -36,10 +36,16 @@ var app = angular.module('app', [
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             }
+
             if (window.StatusBar) {
                 StatusBar.styleDefault();
             }
         });
+
+        $rootScope.$on('callReLoadHomeDataHandler', function (event) {
+            $rootScope.$broadcast('reLoadHomeDataHandler');   // 调用刷新数据
+        });
+
     })
     .directive('onFinishRenderFilters', function ($rootScope, $localStorage, $ionicModal, $localKey, $hostModal) {
         return {

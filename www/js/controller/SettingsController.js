@@ -2,7 +2,7 @@
  * Created by gefan on 2015/8/7.
  */
 /**
- * ÉèÖÃÒ³Ãæ
+ * è®¾ç½®é¡µé¢
  */
 angular.module('controller.settings', [
     'ionic',

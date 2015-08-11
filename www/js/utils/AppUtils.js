@@ -1,7 +1,7 @@
 /**
  * Created by gefan on 2015/8/7.
  */
-angular.module('app.utils', ['ionic'])
+angular.module('app.utils', ['ionic', 'app.localKey'])
     .factory('$localStorage', ['$window', function ($window) {
         return {
             set: function (key, value) {
@@ -32,11 +32,17 @@ angular.module('app.utils', ['ionic'])
     })
     .factory('$alert', function ($ionicPopup) {
         return {
-            showAlert: function (template, title) {
+            showMessage: function (template, title) {
                 $ionicPopup.alert({
                     title: title,
                     template: template
                 });
             }
         }
+    })
+    .factory('$getUrl', function ($localStorage, $localKey) {
+        return {
+            home: '/api/admin',
+            sayHello: '/api/system/sayHello'
+        };
     })
